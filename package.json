@@ -1,0 +1,61 @@
+{
+  "name": "bottender-websocket",
+  "version": "0.0.1",
+  "description": "Websocket connector for Bottender.",
+  "main": "lib/index.js",
+  "keywords": [
+    "bottender",
+    "websocket",
+    "ws",
+    "connector"
+  ],
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "npm run clean && babel src -d lib --ignore __tests__",
+    "clean": "rimraf lib",
+    "check": "flow check",
+    "lint": "eslint src examples",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:staged": "lint-staged",
+    "precommit": "lint-staged",
+    "test": "npm run lint:fix && npm run testonly && npm run check",
+    "testonly": "jest",
+    "testonly:cov": "jest --coverage --runInBand --forceExit",
+    "testonly:watch": "jest --watch",
+    "preversion": "npm test",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "bottender": "^0.15.6",
+    "socket.io": "^2.1.1",
+    "warning": "^4.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^9.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^5.5.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-config-yoctol-base": "^0.17.1",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.3.0",
+    "flow-bin": "^0.80.0",
+    "jest": "^23.5.0",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2",
+    "rimraf": "^2.6.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
