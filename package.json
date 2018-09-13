@@ -1,5 +1,5 @@
 {
-  "name": "bottender-websocket",
+  "name": "bottender-ws",
   "version": "0.0.1",
   "description": "Websocket connector for Bottender.",
   "main": "lib/index.js",

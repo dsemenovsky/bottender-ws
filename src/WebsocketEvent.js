@@ -4,8 +4,7 @@ import { type Event } from 'bottender/lib/context/Event';
 
 export type WebsocketRawEvent = {
   sessionId: string,
-  message?: string,
-  payload?: any,
+  payload: any,
 };
 
 export default class WebsocketEvent implements Event {
@@ -28,15 +27,15 @@ export default class WebsocketEvent implements Event {
    *
    */
   get isMessage(): boolean {
-    return !!this._rawEvent.message;
+    return !!this._rawEvent.payload.msg;
   }
 
   /**
-   * The message object from Console raw event.
+   * The message object from Websocket raw event.
    *
    */
   get message(): ?string {
-    return this._rawEvent.message || null;
+    return this._rawEvent.payload.msg || null;
   }
 
   /**
@@ -66,7 +65,7 @@ export default class WebsocketEvent implements Event {
    *
    */
   get isPayload(): boolean {
-    return !!this._rawEvent.payload;
+    return !!this._rawEvent.payload.data;
   }
 
   /**
@@ -74,6 +73,6 @@ export default class WebsocketEvent implements Event {
    *
    */
   get payload(): ?string {
-    return this._rawEvent.payload || null;
+    return this._rawEvent.payload.data || null;
   }
 }

@@ -34,10 +34,10 @@ export default class WebsocketBot extends Bot {
         console.log('user disconnected: ' + socket.id);
       });
     
-      socket.on('chat message', (msg) => { 
+      socket.on('chat message', payload => { 
         requestHandler({
           sessionId: socket.id,
-          message: msg
+          payload
         });
       });
     });
