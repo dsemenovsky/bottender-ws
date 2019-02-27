@@ -35,7 +35,7 @@ export default class WebsocketEvent implements Event {
    *
    */
   get message(): ?string {
-    return this._rawEvent.payload.msg || null;
+    return { text: this._rawEvent.payload.msg } || null;
   }
 
   /**
